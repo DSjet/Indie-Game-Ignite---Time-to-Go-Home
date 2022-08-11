@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Swipe();
-        
     }
 
     void Swipe ()
@@ -66,6 +65,9 @@ public class PlayerMovement : MonoBehaviour
             if (Mathf.Abs(Distance.x) < tapRange && Mathf.Abs(Distance.y) < tapRange)
             {
                 // Tap Behaviour
+                if(FindObjectOfType<DialogueSystems>().isOpen){
+                    FindObjectOfType<DialogueSystems>().nextSentences();
+                }
             }
         }
     }
