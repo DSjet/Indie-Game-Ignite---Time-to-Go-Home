@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class StatsManager : MonoBehaviour
 {
-    public string unitName;
-    public int unitLevel;
+    [SerializeField] CharacterSO character;
+    string charName;
+    int charLevel;
 
-    public int damage;
+    int damage;
 
-    public int maxHP;
-    public int currentHP;
+    int maxHP;
+    int currentHP;
+    
+
+    void Awake(){
+        charName = character.CharName;
+        charLevel = character.Level;
+        damage = character.Damage;
+        maxHP = character.MaxHP;
+        currentHP = maxHP;
+    }
 
     public bool TakeDamage(int dmg){
         currentHP -= dmg;
@@ -26,4 +36,10 @@ public class StatsManager : MonoBehaviour
         if (currentHP > maxHP)
             currentHP = maxHP;
     }
+
+    public string CharName{get { return charName; }}
+    public int CharLevel{get { return charLevel; }}
+    public int Damage{get { return damage; }}
+    public int MaxHP{get { return maxHP; }}
+    public int CurrentHP{get { return currentHP; }}
 }
