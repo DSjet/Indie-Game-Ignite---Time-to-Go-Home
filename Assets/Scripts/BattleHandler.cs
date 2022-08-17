@@ -16,6 +16,9 @@ public class BattleHandler : MonoBehaviour
     public Transform playerBattleStation;
     public Transform enemyBattleStation;
 
+    public BattleHUD playerHUD;
+    public BattleHUD enemyHUD;
+
     public BattleState state;
 
     void Start()
@@ -32,6 +35,9 @@ public class BattleHandler : MonoBehaviour
         GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
         enemyStats = enemyGO.GetComponent<StatsManager>();
 
+        playerHUD.SetHUD(playerStats);
+        enemyHUD.SetHUD(enemyStats);
+
         yield return new WaitForSeconds(2f);
 
         state = BattleState.PLAYERTURN;
@@ -42,6 +48,7 @@ public class BattleHandler : MonoBehaviour
     {
         bool isDead = enemyStats.TakeDamage(playerStats.damage);
         
+        enemyHUD.SetHP(enemyStats.currentHP);
         yield return new WaitForSeconds(2f);
 
         if (isDead)
@@ -62,6 +69,8 @@ public class BattleHandler : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         bool isDead = playerStats.TakeDamage(enemyStats.damage);
+
+        playerHUD.SetHP(playerStats.currentHP);
 
         yield return new WaitForSeconds(1f);
 
@@ -109,6 +118,8 @@ public class BattleHandler : MonoBehaviour
     {
         playerStats.Heal(5);
         
+        playerHUD.SetHP(playerStats.currentHP);
+
         yield return new WaitForSeconds(2f);
 
         state = BattleState.ENEMYTURN;
