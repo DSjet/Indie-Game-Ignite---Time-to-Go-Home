@@ -46,9 +46,9 @@ public class BattleHandler : MonoBehaviour
 
     IEnumerator PlayerAttack()
     {
-        bool isDead = enemyStats.TakeDamage(playerStats.damage);
+        bool isDead = enemyStats.TakeDamage(playerStats.Damage);
         
-        enemyHUD.SetHP(enemyStats.currentHP);
+        enemyHUD.SetHP(enemyStats.CurrentHP);
         yield return new WaitForSeconds(2f);
 
         if (isDead)
@@ -68,9 +68,9 @@ public class BattleHandler : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        bool isDead = playerStats.TakeDamage(enemyStats.damage);
+        bool isDead = playerStats.TakeDamage(enemyStats.Damage);
 
-        playerHUD.SetHP(playerStats.currentHP);
+        playerHUD.SetHP(playerStats.CurrentHP);
 
         yield return new WaitForSeconds(1f);
 
@@ -118,7 +118,7 @@ public class BattleHandler : MonoBehaviour
     {
         playerStats.Heal(5);
         
-        playerHUD.SetHP(playerStats.currentHP);
+        playerHUD.SetHP(playerStats.CurrentHP);
 
         yield return new WaitForSeconds(2f);
 
