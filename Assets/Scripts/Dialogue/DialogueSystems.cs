@@ -64,6 +64,7 @@ public class DialogueSystems : MonoBehaviour
     public void EndDialogue(){
         isOpen = false;
         dialogueWindow.SetActive(false);
+        GameManager.Instance.UpdateGameState(GameManager.GameState.ROAMINGSTATE);
         //End Dialogue
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
     }
 
     void Start(){
-        UpdateGameState(GameState.ROAMINGSTATE);
+        UpdateGameState(GameState.CUTSCENESTATE);
     }
 
     public void UpdateGameState(GameState newState){
@@ -25,12 +26,15 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.ROAMINGSTATE:
+                FindObjectOfType<PlayerMovement>().disableInputState(false);
                 break;
             case GameState.BATTLESTATE:
                 break;
             case GameState.WINSTATE:
                 break;
             case GameState.CUTSCENESTATE:
+                FindObjectOfType<PlayerMovement>().disableInputState(true);
+                if(FindObjectOfType<Dialogue>() != null) FindObjectOfType<Dialogue>().triggerDialogue();
                 break;
             case GameState.DEATHSTATE:
                 break;
