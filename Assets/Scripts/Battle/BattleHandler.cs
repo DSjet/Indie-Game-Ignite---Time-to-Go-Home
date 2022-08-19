@@ -7,8 +7,11 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
 public class BattleHandler : MonoBehaviour
 {
-    [SerializeField] BattleUnit playerUnit;
-    [SerializeField] BattleHUD playerHUD;
+    [SerializeField] List<BattleUnit> playerUnits;
+    [SerializeField] List<BattleUnit> enemyUnits;
+    [SerializeField] List<BattleHUD> playerHUDs;
+    [SerializeField] List<BattleHUD> enemyHUDs;
+    [SerializeField] BattleDialogue battleDialogue;
 
     void Start(){
         SetupBattle();
@@ -16,8 +19,17 @@ public class BattleHandler : MonoBehaviour
 
     private void SetupBattle()
     {
-        playerUnit.Setup();
-        playerHUD.SetHUD(playerUnit.Char);
+        for(var i = 0; i < playerUnits.Count; i++){
+            playerUnits[i].Setup();
+            playerHUDs[i].SetHUD(playerUnits[i].Char);
+        }
+
+        for(var i = 0; i < enemyUnits.Count; i++){
+            enemyUnits[i].Setup();
+            enemyHUDs[i].SetHUD(enemyUnits[i].Char);
+        }
+
+        battleDialogue.SetDialogue($"{enemyUnits[0].Char.Char.CharName} challengged you to a time duel!");
     }
 
     // public GameObject playerPrefab;
