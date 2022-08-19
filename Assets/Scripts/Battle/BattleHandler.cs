@@ -7,122 +7,139 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
 public class BattleHandler : MonoBehaviour
 {
-    public GameObject playerPrefab;
-    public GameObject enemyPrefab;
+    [SerializeField] BattleUnit playerUnit;
+    [SerializeField] BattleHUD playerHUD;
 
-    StatsManager playerStats;
-    StatsManager enemyStats;
-
-    public Transform playerBattleStation;
-    public Transform enemyBattleStation;
-
-    public BattleHUD playerHUD;
-    public BattleHUD enemyHUD;
-
-    public BattleState state;
-
-    void Start()
-    {
-        state = BattleState.START;
-        StartCoroutine(SetupBattle());
+    void Start(){
+        SetupBattle();
     }
 
-    IEnumerator SetupBattle()
+    private void SetupBattle()
     {
-
-        GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
-        playerStats = playerGO.GetComponent<StatsManager>();
-        GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
-        enemyStats = enemyGO.GetComponent<StatsManager>();
-
-        playerHUD.SetHUD(playerStats);
-        enemyHUD.SetHUD(enemyStats);
-
-        yield return new WaitForSeconds(2f);
-
-        state = BattleState.PLAYERTURN;
-        PlayerTurn();
+        playerUnit.Setup();
+        playerHUD.SetHUD(playerUnit.Char);
     }
 
-    IEnumerator PlayerAttack()
-    {
-        bool isDead = enemyStats.TakeDamage(playerStats.Damage);
-        
-        enemyHUD.SetHP(enemyStats.CurrentHP);
-        yield return new WaitForSeconds(2f);
+    // public GameObject playerPrefab;
+    // public GameObject enemyPrefab;
 
-        if (isDead)
-        {
-            state = BattleState.WON;
-            EndBattle();
-        } else 
-        {
-            state = BattleState.ENEMYTURN;
-            StartCoroutine(EnemyTurn());
-        }
-    }
+    // StatsManager playerStats;
+    // StatsManager enemyStats;
 
-    IEnumerator EnemyTurn()
-    {
-        // add some kind of animation or dialogues
+    // public Transform playerBattleStation;
+    // public Transform enemyBattleStation;
 
-        yield return new WaitForSeconds(1f);
+    // public BattleState state;
+    // BattleHUD playerHUD;
+    // BattleHUD enemyHUD;
 
-        bool isDead = playerStats.TakeDamage(enemyStats.Damage);
+    // void Awake(){
+    //     playerHUD = playerPrefab.GetComponentInChildren<BattleHUD>();
+    //     enemyHUD = enemyPrefab.GetComponentInChildren<BattleHUD>();
+    // }
 
-        playerHUD.SetHP(playerStats.CurrentHP);
+    // void Start()
+    // {
+    //     state = BattleState.START;
+    //     StartCoroutine(SetupBattle());
+    // }
 
-        yield return new WaitForSeconds(1f);
+    // IEnumerator SetupBattle()
+    // {
 
-        if (isDead){
-            state = BattleState.LOST;
-            EndBattle();
-        } else {
-            state = BattleState.PLAYERTURN;
-            PlayerTurn();
-        }
-    }
+    //     GameObject playerGO = Instantiate(playerPrefab, playerBattleStation);
+    //     playerStats = playerGO.GetComponent<StatsManager>();
+    //     GameObject enemyGO = Instantiate(enemyPrefab, enemyBattleStation);
+    //     enemyStats = enemyGO.GetComponent<StatsManager>();
 
-    void EndBattle()
-    {
-        if(state == BattleState.WON)
-        {
-            // display winning text
-        } else if (state == BattleState.LOST) {
-            // display losing text
-        }
-    }
+    //     playerHUD.SetHUD(playerStats);
+    //     enemyHUD.SetHUD(enemyStats);
 
-    private void PlayerTurn()
-    {
-        
-    }
+    //     yield return new WaitForSeconds(2f);
 
-    public void OnAttackButton()
-    {
-        if (state != BattleState.PLAYERTURN)
-            return;
-        
-        StartCoroutine(PlayerAttack());
-    }
+    //     state = BattleState.PLAYERTURN;
+    //     PlayerTurn();
+    // }
 
-    public void OnHealButton()
-    {
-        if (state != BattleState.PLAYERTURN)
-            return;
-        
-        StartCoroutine(PlayerHeal());
-    }
+    // IEnumerator PlayerAttack()
+    // {
+    //     bool isDead = enemyStats.TakeDamage(playerStats.Damage);
 
-    IEnumerator PlayerHeal()
-    {
-        playerStats.Heal(5);
-        
-        playerHUD.SetHP(playerStats.CurrentHP);
+    //     enemyHUD.SetHP(enemyStats.CurrentHP);
+    //     yield return new WaitForSeconds(2f);
 
-        yield return new WaitForSeconds(2f);
+    //     if (isDead)
+    //     {
+    //         state = BattleState.WON;
+    //         EndBattle();
+    //     } else 
+    //     {
+    //         state = BattleState.ENEMYTURN;
+    //         StartCoroutine(EnemyTurn());
+    //     }
+    // }
 
-        state = BattleState.ENEMYTURN;
-        StartCoroutine(EnemyTurn());
-    }
+    // IEnumerator EnemyTurn()
+    // {
+    //     // add some kind of animation or dialogues
+
+    //     yield return new WaitForSeconds(1f);
+
+    //     bool isDead = playerStats.TakeDamage(enemyStats.Damage);
+
+    //     playerHUD.SetHP(playerStats.CurrentHP);
+
+    //     yield return new WaitForSeconds(1f);
+
+    //     if (isDead){
+    //         state = BattleState.LOST;
+    //         EndBattle();
+    //     } else {
+    //         state = BattleState.PLAYERTURN;
+    //         PlayerTurn();
+    //     }
+    // }
+
+    // void EndBattle()
+    // {
+    //     if(state == BattleState.WON)
+    //     {
+    //         // display winning text
+    //     } else if (state == BattleState.LOST) {
+    //         // display losing text
+    //     }
+    // }
+
+    // private void PlayerTurn()
+    // {
+
+    // }
+
+    // public void OnAttackButton()
+    // {
+    //     if (state != BattleState.PLAYERTURN)
+    //         return;
+
+    //     StartCoroutine(PlayerAttack());
+    // }
+
+    // public void OnHealButton()
+    // {
+    //     if (state != BattleState.PLAYERTURN)
+    //         return;
+
+    //     StartCoroutine(PlayerHeal());
+    // }
+
+    // IEnumerator PlayerHeal()
+    // {
+    //     playerStats.Heal(5);
+
+    //     playerHUD.SetHP(playerStats.CurrentHP);
+
+    //     yield return new WaitForSeconds(2f);
+
+    //     state = BattleState.ENEMYTURN;
+    //     StartCoroutine(EnemyTurn());
+    // }
 }

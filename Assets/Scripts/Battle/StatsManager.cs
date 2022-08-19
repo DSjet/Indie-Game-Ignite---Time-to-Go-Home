@@ -5,41 +5,54 @@ using UnityEngine;
 public class StatsManager : MonoBehaviour
 {
     [SerializeField] CharacterSO character;
-    string charName;
-    int charLevel;
-
-    int damage;
-
-    int maxHP;
-    int currentHP;
+    [SerializeField] int level;
+    [SerializeField] bool isFriendlyUnit;
     
+    public Character Char{ get; set; }
 
-    void Awake(){
-        charName = character.CharName;
-        charLevel = character.Level;
-        damage = character.Damage;
-        maxHP = character.MaxHP;
-        currentHP = maxHP;
+    public void Setup(){
+        Char = new Character(character, level);
+        if (isFriendlyUnit){
+            // friendly unit setup
+        } else {
+            // hostile unit setup
+        }
     }
 
-    public bool TakeDamage(int dmg){
-        currentHP -= dmg;
+    // string charName;
+    // int charLevel;
 
-        if (currentHP <= 0)
-            return true;
-        else
-            return false;
-    }
+    // int damage;
 
-    public void Heal(int amount){
-        currentHP += amount;
-        if (currentHP > maxHP)
-            currentHP = maxHP;
-    }
+    // int maxHP;
+    // int currentHP;
 
-    public string CharName{get { return charName; }}
-    public int CharLevel{get { return charLevel; }}
-    public int Damage{get { return damage; }}
-    public int MaxHP{get { return maxHP; }}
-    public int CurrentHP{get { return currentHP; }}
+    // void Awake(){
+    //     charName = character.CharName;
+    //     // charLevel = character.Level;
+    //     damage = character.Damage;
+    //     maxHP = character.MaxHP;
+    //     currentHP = maxHP;
+    // }
+
+    // public bool TakeDamage(int dmg){
+    //     currentHP -= dmg;
+
+    //     if (currentHP <= 0)
+    //         return true;
+    //     else
+    //         return false;
+    // }
+
+    // public void Heal(int amount){
+    //     currentHP += amount;
+    //     if (currentHP > maxHP)
+    //         currentHP = maxHP;
+    // }
+
+    // public string CharName{get { return charName; }}
+    // public int CharLevel{get { return charLevel; }}
+    // public int Damage{get { return damage; }}
+    // public int MaxHP{get { return maxHP; }}
+    // public int CurrentHP{get { return currentHP; }}
 }
