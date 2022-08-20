@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.CUTSCENESTATE:
                 FindObjectOfType<PlayerMovement>().disableInputState(true);
-                if(FindObjectOfType<Dialogue>() != null) FindObjectOfType<Dialogue>().triggerDialogue();
                 break;
             case GameState.DEATHSTATE:
                 break;

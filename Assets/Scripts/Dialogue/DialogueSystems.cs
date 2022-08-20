@@ -15,6 +15,7 @@ public class DialogueSystems : MonoBehaviour
     public bool isOpen = false;
 
     public void startDialogue(DialogueData[] data){
+        GameManager.Instance.UpdateGameState(GameManager.GameState.CUTSCENESTATE);
         dialogueWindow.SetActive(true);
         isOpen = true;
         dialogueArray.Clear();
