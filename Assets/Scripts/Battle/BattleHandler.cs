@@ -13,11 +13,15 @@ public class BattleHandler : MonoBehaviour
     [SerializeField] List<BattleHUD> enemyHUDs;
     [SerializeField] BattleDialogue battleDialogue;
 
+    BattleState state;
+    int currentAction;
+    int currentMove;
+
     void Start(){
-        SetupBattle();
+        StartCoroutine(SetupBattle());
     }
 
-    private void SetupBattle()
+    private IEnumerator SetupBattle()
     {
         for(var i = 0; i < playerUnits.Count; i++){
             playerUnits[i].Setup();
@@ -29,7 +33,125 @@ public class BattleHandler : MonoBehaviour
             enemyHUDs[i].SetHUD(enemyUnits[i].Char);
         }
 
-        battleDialogue.SetDialogue($"{enemyUnits[0].Char.Char.CharName} challengged you to a time duel!");
+        yield return battleDialogue.TypeDialogue($"{enemyUnits[0].Char.Char.CharName} challengged you to a time duel!");
+        yield return new WaitForSeconds(1f);
+
+        PlayerAction();
+    }
+
+    private void PlayerAction()
+    {
+        state = BattleState.PlayerAction;
+        StartCoroutine(battleDialogue.TypeDialogue("Choose an action"));
+        battleDialogue.EnableActionSelector(true);
+    }
+
+    private void PlayerMove(){
+        state = BattleState.PlayerMove;
+        battleDialogue.EnableActionSelector(false);
+        battleDialogue.EnableDialogueText(false);
+        battleDialogue.EnableMoveSelector(true);
+    }
+
+    private void Update() {
+        if (state == BattleState.PlayerAction){
+            HandleActionSelection();
+        } else if (state == BattleState.PlayerMove){
+            HandleMoveSelection();
+        }
+    }
+
+
+    private void HandleActionSelection()
+    {
+        if (Input.GetKeyDown(KeyCode.DownArrow)){
+            if (currentAction < 1){
+                ++currentAction;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.UpArrow)){
+            if(currentAction > 0){
+                --currentAction;
+            }
+        }
+
+        battleDialogue.UpdateActionSelection(currentAction);
+
+        if (Input.GetKeyDown(KeyCode.Z)){
+            if (currentAction == 0){
+                
+            } else if (currentAction == 0){
+                // run
+            }
+        }
+    }
+    private void HandleMoveSelection()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow)){
+            if (currentMove < playerUnits[0].Char.Skills.Count - 1){
+                ++currentMove;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow)){
+            if(currentMove > 0){
+                --currentMove;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow)){
+            if (currentMove < playerUnits[0].Char.Skills.Count - 2){
+                currentMove += 2;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.UpArrow)){
+            if(currentMove > 1){
+                currentMove -= 2;
+            }
+        }
+
+        battleDialogue.UpdateMoveSelection(currentMove, playerUnits[0].Char.Skills[currentMove]); // sementara ini di set ke first character karena belum implement party system
+
+        if (Input.GetKeyDown(KeyCode.Z)){
+            battleDialogue.EnableMoveSelector(false);
+            battleDialogue.EnableDialogueText(true);
+            StartCoroutine(PerformPlayerMove());
+        }
+    }
+
+    private IEnumerator PerformPlayerMove()
+    {
+        state = BattleState.Busy;
+        var move = playerUnits[0].Char.Skills[currentMove];
+        yield return battleDialogue.TypeDialogue("bla bla bla use this move");
+        yield return new WaitForSeconds(1f);
+
+        bool isFainted = enemyUnits[0].Char.TakeDamage(move, playerUnits[0].Char);
+        enemyHUDs[0].UpdateHP();
+
+        if (isFainted){
+            yield return battleDialogue.TypeDialogue("bla bla bla enemy fainted");
+        }
+        else {
+            StartCoroutine(EnemyMove());
+        }
+    }
+
+    private IEnumerator EnemyMove()
+    {
+        state = BattleState.EnemyMove;
+
+        var move = enemyUnits[0].Char.GetRandomSkill();
+         yield return battleDialogue.TypeDialogue("bla bla bla use this move");
+        yield return new WaitForSeconds(1f);
+
+        bool isFainted = playerUnits[0].Char.TakeDamage(move, playerUnits[0].Char);
+        playerHUDs[0].UpdateHP();
+
+        if (isFainted){
+            yield return battleDialogue.TypeDialogue("bla bla bla player fainted");
+        }
+        else {
+            PlayerAction();
+        }
     }
 
     // public GameObject playerPrefab;

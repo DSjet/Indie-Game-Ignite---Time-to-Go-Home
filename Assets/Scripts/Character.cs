@@ -36,4 +36,24 @@ public class Character
             return Mathf.FloorToInt((Char.MaxHP * Level)/100f) + 10;
         }
     }
+
+    public bool TakeDamage(Skills skill, Character attacker){
+        float modifiers = Random.Range(0.85f, 1f);
+        float a = (1*attacker.Level + 10)/ 250f;
+        float d = a * skill.Skill.Power * ((float) attacker.Attack) + 2;
+        int damage = Mathf.FloorToInt(d * modifiers);
+
+        HP -= damage;
+        if (HP <= 0){
+            HP = 0;
+            return true;
+        }
+
+        return false;
+    }
+
+    public Skills GetRandomSkill(){
+        int r = Random.Range(0, Skills.Count);
+        return Skills[r];
+    }
 }
