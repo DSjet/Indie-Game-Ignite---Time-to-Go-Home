@@ -52,6 +52,12 @@ public class DialogueSystems : MonoBehaviour
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.025f);
         }
+        StartCoroutine(moveSentence());
+    }
+
+    IEnumerator moveSentence(){
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        nextSentences();
     }
 
     public void NextDialogue(){

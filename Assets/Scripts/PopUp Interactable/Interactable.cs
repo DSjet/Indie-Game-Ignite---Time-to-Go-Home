@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
     // Start is called before the first frame update
     private BoxCollider2D collide;
     private bool canBeTriggered = false;
+    public UnityEvent events;
 
     void Start(){
         collide = GetComponentInChildren<BoxCollider2D>();
@@ -28,7 +30,14 @@ public class Interactable : MonoBehaviour
 
     void Update(){
         if(canBeTriggered && Input.GetKeyDown(KeyCode.F)){
-            GetComponent<Dialogue>().triggerDialogue();
+            events?.Invoke();
         }
+    }
+
+    public void DeleteAfterDone(Collider2D collide){
+        canBeTriggered = false;
+        FindObjectOfType<ShowPopUp>().showPopUp(false);
+        Destroy(this);
+        if(collide != null) Destroy(collide);
     }
 }

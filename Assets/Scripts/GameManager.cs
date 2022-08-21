@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     }
 
     void Start(){
-        UpdateGameState(GameState.CUTSCENESTATE);
+        UpdateGameState(GameState.ROAMINGSTATE);
     }
 
     public void UpdateGameState(GameState newState){
