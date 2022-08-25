@@ -68,7 +68,7 @@ public class BattleDialogue : MonoBehaviour
         damageAmount.text = skill.Skill.Power.ToString();
     }
 
-    public void SetMoveNames(List<Skills> skills){
+    public void SetSkillNames(List<Skills> skills){
         for (int i = 0; i < moveTexts.Count; ++i){
             if ( i < skills.Count)
                 moveTexts[i].text = skills[i].Skill.SkillName;

@@ -11,17 +11,31 @@ public class CharacterSO : ScriptableObject
     [SerializeField] Sprite CharSprite;
     [SerializeField] Faction faction;
 
-    [SerializeField] int damage;
+    // Base Stats
+    [SerializeField] int strength;
+    [SerializeField] int defense;
+    [SerializeField] int energyPoint;
     [SerializeField] int maxHP;
-
+    [SerializeField] int expYield;
     [SerializeField] List<LearnableSkills> learnableSkills;
 
+    public static int MaxNumOfMoves{ get; set; } = 4;
+
+    public int GetExpForLevel(int Level){
+        return Level * Level * Level;
+    }
 
     public string CharName {get { return charName; }}
-    public int Damage{get { return damage; }}
+
+    // Base Stats
+    public int Strength{get { return strength; }}
+    public int Defense{get { return defense; }}
+    public int EnergyPoint{get { return energyPoint;}}
     public int MaxHP{get { return maxHP; }}
     public Faction Faction{get { return faction; }}
     public List<LearnableSkills> LearnableSkills{ get { return learnableSkills; }}
+
+    public int ExpYield => expYield;
 }
 
 [System.Serializable]
@@ -40,6 +54,7 @@ public class LearnableSkills{
         }
     }
 }
+
 
 public enum Faction{
     Friendly,
