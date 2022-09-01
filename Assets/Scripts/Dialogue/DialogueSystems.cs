@@ -8,6 +8,7 @@ public class DialogueSystems : MonoBehaviour
     [SerializeField] private Text dialogueText;
     [SerializeField] private Text nameText;
     public GameObject dialogueWindow;
+    public TimeWorld timer;
 
     private Queue<DialogueData> dialogueArray = new Queue<DialogueData>();
     private Queue<string> sentences = new Queue<string>();
@@ -15,7 +16,8 @@ public class DialogueSystems : MonoBehaviour
     public bool isOpen = false;
 
     public void startDialogue(DialogueData[] data){
-        GameManager.Instance.UpdateGameState(GameManager.GameState.CUTSCENESTATE);
+        GameManager.Instance.ChangeState(GameState.CutScene);
+        TimeWorld.pauseTimer();
         dialogueWindow.SetActive(true);
         isOpen = true;
         dialogueArray.Clear();
@@ -56,7 +58,7 @@ public class DialogueSystems : MonoBehaviour
     }
 
     IEnumerator moveSentence(){
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return new WaitUntil(() => Input.anyKeyDown);
         nextSentences();
     }
 
@@ -71,7 +73,8 @@ public class DialogueSystems : MonoBehaviour
     public void EndDialogue(){
         isOpen = false;
         dialogueWindow.SetActive(false);
-        GameManager.Instance.UpdateGameState(GameManager.GameState.ROAMINGSTATE);
+        GameManager.Instance.ChangeState(GameState.FreeRoam);
+        TimeWorld.startTimer();
         //End Dialogue
     }
 }

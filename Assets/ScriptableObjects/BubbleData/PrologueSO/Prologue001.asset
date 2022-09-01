@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fbb5fcf79ee1dd4b956d50863d9cb08, type: 3}
+  m_Name: Prologue001
+  m_EditorClassIdentifier: 
+  yOffset: 0
+  Dialogue:
+  - Tag: Cat God
+    text:
+    - Fear not little one.
+    - I have heard your wish.
+    PlayAudio: {fileID: 0}
+  - Tag: 
+    text: []
+    PlayAudio: {fileID: 8300000, guid: 6df27d38b2696e945a2f4943a7b94407, type: 3}
+  - Tag: Cat God
+    text:
+    - I have blessed you with perfect health for your journey.
+    - Go, Little One.
+    - Before your times run out.
+    PlayAudio: {fileID: 0}
+  ifBattleNotCalled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2595246365372112561, guid: 0319fdc9cba9bc54b97cdb6376ad4609, type: 3}
+        m_TargetAssemblyTypeName: MoveWorld, Assembly-CSharp
+        m_MethodName: MoveScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: TutorialScene
+          m_BoolArgument: 0
+        m_CallState: 2

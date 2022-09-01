@@ -9,10 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 4e94f5f48da2e2b4da43af18968d3c3e
   - enabled: 1
-    path: Assets/Scenes/TestMovement 1.unity
-    guid: 03ec412e8dd54334c92d086b87a48608
+    path: Assets/Scenes/PrologueScene.unity
+    guid: ed710790c8f4ce547b512a54b1424fb8
   - enabled: 1
-    path: Assets/Scenes/TurnBaseTest.unity
-    guid: 1c2939559958e324395baad1f8108512
+    path: Assets/Scenes/TutorialScene.unity
+    guid: f8222d131ff65b74e80032ce3c138d88
+  - enabled: 1
+    path: Assets/Scenes/EncounterScene.unity
+    guid: 311efc15b255cbf43aa175fe4f7035e7
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2f35e047f12c0a844849b5f03ceabf12, type: 2}

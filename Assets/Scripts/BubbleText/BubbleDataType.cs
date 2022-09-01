@@ -8,4 +8,5 @@ public class BubbleDataType
     public string Tag;
     [TextArea (1,3)]
     public string[] text;
+    public AudioClip PlayAudio;
 }

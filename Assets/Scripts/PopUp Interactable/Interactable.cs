@@ -30,7 +30,8 @@ public class Interactable : MonoBehaviour
 
     void Update(){
         if(canBeTriggered && Input.GetKeyDown(KeyCode.F)){
-            events?.Invoke();
+            if(GameObject.FindObjectOfType<DialogueSystems>() != null && !GameObject.FindObjectOfType<DialogueSystems>().isOpen)
+                events?.Invoke();
         }
     }
 
