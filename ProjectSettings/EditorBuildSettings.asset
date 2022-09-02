@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/PrologueScene.unity
     guid: ed710790c8f4ce547b512a54b1424fb8
   - enabled: 1
-    path: Assets/Scenes/TutorialScene.unity
+    path: Assets/Scenes/UI.unity
     guid: f8222d131ff65b74e80032ce3c138d88
   - enabled: 1
     path: Assets/Scenes/EncounterScene.unity
