@@ -20,7 +20,6 @@ public class BaronBarrier : MonoBehaviour
             gotTriggered++;
             Vector2 pos = new Vector2(coordinateX, target.position.y);
             target.position = pos;
-            pm.forcedTransformMethod(pos);
             if(gotTriggered > 2){
                 invokeWhenTriggeredThrice?.Invoke();
             }

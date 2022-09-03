@@ -11,14 +11,17 @@ public class PauseManager : MonoBehaviour
     public void OnPauseButtonClick(){
         pauseMenu.SetActive(true);
         worldUI.SetActive(false);
+        Time.timeScale = 0;
     }
 
     public void OnResumeButtonClick(){
         pauseMenu.SetActive(false);
         worldUI.SetActive(true);
+        Time.timeScale = 1;
     }
 
     public void OnExitButtonClick(){
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 }

@@ -10,6 +10,8 @@ public class AddGameObjectFile : MonoBehaviour
         GameObject objects = new GameObject(name);
         objects.transform.SetParent(parent.transform, false);
         objects.AddComponent<Image>().sprite = image;
+        Vector2 pos = new Vector2(300, 300);
+        objects.GetComponent<Image>().rectTransform.sizeDelta = pos;
         addPoint(objects);
     }
 

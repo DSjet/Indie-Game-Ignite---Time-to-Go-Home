@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
+using TMPro;
 
 public class DialogueSystems : MonoBehaviour
 {
-    [SerializeField] private Text dialogueText;
-    [SerializeField] private Text nameText;
+    [SerializeField] private TMP_Text dialogueText;
+    [SerializeField] private TMP_Text nameText;
     public GameObject dialogueWindow;
     public TimeWorld timer;
 
