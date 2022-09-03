@@ -1,0 +1,3 @@
+Tilesetnya ukuran 32x32
+
+Trims.
