@@ -155,12 +155,12 @@ MonoBehaviour:
   isContinuingWithBattle: 0
   DialogueData: {fileID: 11400000, guid: 2806ae87f9be94149afabc95f923a8ae, type: 2}
   playerParty:
-  - image: {fileID: 1075993247170539406, guid: a2e13df436b3808468dc009e2300e8ce, type: 3}
+  - image: {fileID: 21300000, guid: cee0eff233cfe4f4d9c73a67c357c36a, type: 3}
     name: Player
     characterSO: {fileID: 11400000, guid: 97b3dee4351ca2b45aa482f3d35ba4b8, type: 2}
     level: 0
   enemyParty:
-  - image: {fileID: 1075993247170539406, guid: a2e13df436b3808468dc009e2300e8ce, type: 3}
+  - image: {fileID: 21300000, guid: fcadff4737b2e0d438e75ef72dec3790, type: 3}
     name: Baron
     characterSO: {fileID: 11400000, guid: ccdbfe76da003f941a3f79ff902e23d1, type: 2}
     level: 0
@@ -211,12 +211,12 @@ MonoBehaviour:
   isContinuingWithBattle: 0
   DialogueData: {fileID: 11400000, guid: 5dbdbb5851370c64682670adde2dfd6f, type: 2}
   playerParty:
-  - image: {fileID: 1075993247170539406, guid: a2e13df436b3808468dc009e2300e8ce, type: 3}
+  - image: {fileID: 21300000, guid: cee0eff233cfe4f4d9c73a67c357c36a, type: 3}
     name: Player
     characterSO: {fileID: 11400000, guid: 97b3dee4351ca2b45aa482f3d35ba4b8, type: 2}
     level: 1
   enemyParty:
-  - image: {fileID: 1075993247170539406, guid: a2e13df436b3808468dc009e2300e8ce, type: 3}
+  - image: {fileID: 21300000, guid: 98a17c802e2eb9e498f973ed7827cb70, type: 3}
     name: DeadEye
     characterSO: {fileID: 11400000, guid: ccdbfe76da003f941a3f79ff902e23d1, type: 2}
     level: 0

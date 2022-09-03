@@ -15,7 +15,7 @@ public class AfterScenePlayerPosition : MonoBehaviour
     void Start(){
         if(BaronBarrier.gotTriggered > 2){
             BaronIsDone = true;
-            Vector2 pos = new Vector2(28.5f, -0.5f);
+            Vector2 pos = new Vector2(-5.5f, 25.5f);
             player.transform.position = pos;
         }
         if(BaronIsDone){

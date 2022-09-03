@@ -11,7 +11,7 @@ public class DeadEyeTrigger : MonoBehaviour
     public PlayerMovement pm;
     private void OnTriggerEnter2D(Collider2D other){
         hasBeenTriggered = true;
-        Vector2 pos = new Vector2(coordinateX, -0.5f);
+        Vector2 pos = new Vector2(coordinateX, 46.5f);
         if(other.gameObject.tag == "Player"){
             ev?.Invoke();
         }

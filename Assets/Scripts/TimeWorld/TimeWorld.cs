@@ -49,7 +49,7 @@ public class TimeWorld : MonoBehaviour
                     if(--TimeMinute < 0){
                         TimeMinute = 59;
                         if(--TimeHour < 0){
-                            //End Game
+                            GameObject.FindObjectOfType<MoveWorld>().MoveScene("GameOver");
                         }
                     }
                 }

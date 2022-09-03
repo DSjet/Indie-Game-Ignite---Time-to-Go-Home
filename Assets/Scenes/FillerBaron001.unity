@@ -532,12 +532,12 @@ MonoBehaviour:
   isContinuingWithBattle: 0
   DialogueData: {fileID: 11400000, guid: 889750955881465499fa4f1dae40dcea, type: 2}
   playerParty:
-  - image: {fileID: 1075993247170539406, guid: a2e13df436b3808468dc009e2300e8ce, type: 3}
+  - image: {fileID: 21300000, guid: cee0eff233cfe4f4d9c73a67c357c36a, type: 3}
     name: Player
     characterSO: {fileID: 11400000, guid: 97b3dee4351ca2b45aa482f3d35ba4b8, type: 2}
     level: 0
   enemyParty:
-  - image: {fileID: 1075993247170539406, guid: a2e13df436b3808468dc009e2300e8ce, type: 3}
+  - image: {fileID: 21300000, guid: b8ff67005fa7abb4bbe50ae3830f06d8, type: 3}
     name: Cat God
     characterSO: {fileID: 11400000, guid: 14d49974476624d48b05dfd8b90a7726, type: 2}
     level: 0
