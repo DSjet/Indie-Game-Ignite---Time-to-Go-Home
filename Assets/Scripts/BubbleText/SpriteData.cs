@@ -7,4 +7,8 @@ public class SpriteData
 {
     public Sprite image;
     public string name;
+
+    public CharacterSO characterSO;
+
+    public int level;
 }

@@ -9,10 +9,12 @@ public class BubbleSystems : MonoBehaviour
 {
     public GameObject bubbleBox;
     public GameObject HUDHandler;
+    public PartySystem playerPartySystem;
+    public PartySystem enemyPartySystem;
     public TMP_Text Text;
+    public MoveWorld moveScript;
     private RectTransform textObject;
     public GameObject battleHUD;
-    private UnityEvent BattleNotCalledEvent;
     public bool isDialogueOpen = false;
     private bool startBattle = false;
 
@@ -22,11 +24,14 @@ public class BubbleSystems : MonoBehaviour
     private Queue<string> dialogueText = new Queue<string>();
     private float offset = 0f;
     private Vector2 initialTextSize;
+    private string moveSceneTo;
 
     void Awake(){
         bgRenderer = bubbleBox.GetComponent<RectTransform>();
         textObject = Text.gameObject.GetComponent<RectTransform>();
         initialTextSize = textObject.rect.size;
+        moveSceneTo = EncounterSceneHandler.moveSceneTo;
+        GameManager.Instance.ChangeState(GameState.CutScene);
     }
 
     public void startDialogue(BubbleDataSO data, bool startBattle){
@@ -39,7 +44,6 @@ public class BubbleSystems : MonoBehaviour
         offset = data.yOffset;
         isDialogueOpen = true;
         this.startBattle = startBattle;
-        this.BattleNotCalledEvent = data.ifBattleNotCalled;
         iterateDialogue(Dialogues.Dequeue());
     }
 
@@ -102,8 +106,13 @@ public class BubbleSystems : MonoBehaviour
         isDialogueOpen = false;
         if(startBattle){
             battleHUD.SetActive(true);
+            GameManager.Instance.ChangeState(GameState.Battle);
+            GameObject.FindObjectOfType<BattleHandler>().StartBattle();
         }else{
-            BattleNotCalledEvent?.Invoke();
+            if(moveSceneTo != null || moveSceneTo != ""){
+                moveScript.MoveScene(moveSceneTo);
+                GameManager.Instance.ChangeState(GameState.FreeRoam);
+            }
         }
         TimeWorld.startTimer();
     }

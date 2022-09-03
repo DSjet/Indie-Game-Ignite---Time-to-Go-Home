@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlayerMovement playerController;
     [SerializeField] BattleHandler battleHandler;
     [SerializeField] Camera worldCamera;
-    [SerializeField] Camera battleCamera;
 
     GameState state;
 
@@ -33,7 +32,7 @@ public class GameManager : MonoBehaviour
         var playerParty = playerController.GetComponent<PartySystem>();
         var enemyParty = playerController.GetComponent<PartySystem>();
 
-        battleHandler.StartBattle(playerParty, enemyParty);
+        battleHandler.StartBattle();
     }
 
     void EndBattle(bool won){
@@ -53,13 +52,11 @@ public class GameManager : MonoBehaviour
     void Update(){
         if (state == GameState.FreeRoam){
             GameObject.FindObjectOfType<PlayerMovement>().disableInputState(false);
-            // playerController.HandleUpdate();
         } 
         else if (state == GameState.Battle){ 
-            // Give Control to The Battle Controller
-            battleHandler.HandleUpdate();
+            //battleHandler.HandleUpdate();
         }else if (state == GameState.CutScene){
-            GameObject.FindObjectOfType<PlayerMovement>().disableInputState(true);
+            if(GameObject.FindObjectOfType<PlayerMovement>() != null) GameObject.FindObjectOfType<PlayerMovement>().disableInputState(true);
         }
     }
 }

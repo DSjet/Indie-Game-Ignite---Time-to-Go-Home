@@ -10,7 +10,6 @@ public class TimeWorld : MonoBehaviour
     public static int TimeSecond = 0;
     public static int TimeMiliSecond = 0;
     public static bool isTimePaused = true;
-    private string timerString = "";
     private TextMeshProUGUI timerText;
     public static bool isShowed = false;
 
@@ -58,25 +57,8 @@ public class TimeWorld : MonoBehaviour
         }
     }
 
-    string constructString(){
-        timerString = "";
-        if(TimeHour < 10){
-            timerString = "0";
-        }
-        timerString += TimeHour.ToString() + " : ";
-        if(TimeMinute < 10){
-            timerString += "0";
-        }
-        timerString += TimeMinute.ToString() + " : ";
-        if(TimeSecond < 10){
-            timerString += "0";
-        }
-        timerString += TimeSecond.ToString();
-        return timerString;
-    }
-
     void Update(){
         if(isShowed)
-            timerText.text = constructString();
+            timerText.text = $"{TimeHour:00}:{TimeMinute:00}:{TimeSecond:00}";
     }
 }

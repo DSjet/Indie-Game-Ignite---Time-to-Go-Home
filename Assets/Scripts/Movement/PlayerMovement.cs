@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     private bool disableMovement = false;
     public bool doneWaitForMove = true;
+    public bool isForcedTransform = false;
+    public Vector2 forcedTransformPosition;
 
     Vector2 movement;
 
@@ -44,23 +46,39 @@ public class PlayerMovement : MonoBehaviour
         disableMovement = state;
     }
 
+    public void forcedTransformMethod(Vector2 pos){
+        isForcedTransform = true;
+        disableInputState(true);
+        StopAllCoroutines();
+        doneWaitForMove = true;
+        disableInputState(false);
+        isForcedTransform = false;
+    }
+
     IEnumerator handleWaitTimeMovement(Vector2 pos, Vector2 start){
         doneWaitForMove = false;
         Vector2 isStuckPosition = start;
         int isStuck = 0;
         while((pos - rb.position).sqrMagnitude > 0.0025f){
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-            yield return null;
-            if(rb.position == isStuckPosition){
-                if(isStuck > 3){
-                    transform.position = start;
-                    doneWaitForMove = true;
-                    break;
-                }
-                isStuck++;
+            if(isForcedTransform){
+                doneWaitForMove = true;
+                transform.position = forcedTransformPosition;
+                StopCoroutine(handleWaitTimeMovement(pos, start));
+                break;
             }else{
-                isStuckPosition = rb.position;
-                isStuck = 0;
+                rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+                yield return null;
+                if(rb.position == isStuckPosition){
+                    if(isStuck > 3){
+                        transform.position = start;
+                        doneWaitForMove = true;
+                        break;
+                    }
+                isStuck++;
+                }else{
+                    isStuckPosition = rb.position;
+                    isStuck = 0;
+                }
             }
         }
         if(isStuck == 0){

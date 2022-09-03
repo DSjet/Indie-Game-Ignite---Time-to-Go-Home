@@ -179,10 +179,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 0
+    m_Start: 1.45
     m_ClipIn: 0
     m_Asset: {fileID: 7227395225604650050}
-    m_Duration: 3.566666666666667
+    m_Duration: 3.5666666666666673
     m_TimeScale: 1
     m_ParentTrack: {fileID: -2457631348968631800}
     m_EaseInDuration: 0
@@ -212,7 +212,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: TextClip
   - m_Version: 1
-    m_Start: 3.566666666666667
+    m_Start: 5.0166666666666675
     m_ClipIn: 0
     m_Asset: {fileID: 3223013017728305937}
     m_Duration: 5
@@ -245,7 +245,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: TextClip
   - m_Version: 1
-    m_Start: 8.566666666666666
+    m_Start: 10.016666666666667
     m_ClipIn: 0
     m_Asset: {fileID: 7120638397164537345}
     m_Duration: 5
@@ -278,9 +278,42 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: TextClip
   - m_Version: 1
-    m_Start: 13.566666666666666
+    m_Start: 15.016666666666673
     m_ClipIn: 0
     m_Asset: {fileID: -7310510201837446985}
+    m_Duration: 5
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: -2457631348968631800}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: TextClip
+  - m_Version: 1
+    m_Start: 20.016666666666673
+    m_ClipIn: 0
+    m_Asset: {fileID: 1864924703864548437}
     m_Duration: 5
     m_TimeScale: 1
     m_ParentTrack: {fileID: -2457631348968631800}
@@ -329,76 +362,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: TextClip
   - m_Version: 1
-    m_Start: 18.566666666666666
-    m_ClipIn: 0
-    m_Asset: {fileID: 1864924703864548437}
-    m_Duration: 5
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -2457631348968631800}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: TextClip
-  - m_Version: 1
-    m_Start: 23.566666666666666
+    m_Start: 25.016666666666673
     m_ClipIn: 0
     m_Asset: {fileID: -5301197270159632718}
     m_Duration: 5
@@ -480,7 +444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 28.566666666666666
+  m_Time: 30.016666666666673
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: a4a187d3a7e41d3459b95d9ab9c52e75, type: 2}

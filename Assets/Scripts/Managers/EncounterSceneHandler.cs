@@ -10,7 +10,7 @@ public static class EncounterSceneHandler
 
     public static SpriteData[] playerParty;
     public static SpriteData[] enemyParty;
-    public static UnityEvent BattleNotCalledEvent;
+    public static string moveSceneTo;
 
     //Saving and Load state
 }

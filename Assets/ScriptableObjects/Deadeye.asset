@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5291bfa0a22528541ba0e0745cfe6814, type: 3}
+  m_Name: Deadeye
+  m_EditorClassIdentifier: 
+  charName: Deadeye
+  CharSprite: {fileID: 0}
+  faction: 0
+  strength: 5
+  defense: 3
+  energyPoint: 10
+  maxHP: 20
+  expYield: 0
+  learnableSkills:
+  - skills: {fileID: 11400000, guid: 35240e83ca875af4aae3399704a6f468, type: 2}
+    level: 0
+  - skills: {fileID: 11400000, guid: 76c2a1246e0e0064b9027ebefe249db8, type: 2}
+    level: 0

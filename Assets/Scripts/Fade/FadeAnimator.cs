@@ -1,18 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class FadeAnimator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public Animator animator;
+    public Canvas canvas;
+    private int index = -1;
+    private string nameScene;
+
+    public void triggerFadeout(int index){
+        animator.SetTrigger("MoveScene");
+        this.index = index;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void triggerFadeout(string sceneName){
+        animator.SetTrigger("MoveScene");
+        this.nameScene = sceneName;
+    }
+
+    public void moveAfterDone(){
+        if(index == -1){
+            SceneManager.LoadScene(nameScene);
+        }else{
+            SceneManager.LoadScene(index);
+        }
     }
 }

@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MoveWorld : MonoBehaviour
 {
+    public FadeAnimator fadescript;
     public void MoveScene(string SceneName){
-        SceneManager.LoadScene(SceneName);
+        fadescript.triggerFadeout(SceneName);
     }
 
     public void MoveScene(int index){
-        SceneManager.LoadScene(index);
+        fadescript.triggerFadeout(index);
     }
 }

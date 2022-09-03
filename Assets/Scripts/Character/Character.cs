@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Character
 {
-    [SerializeField] CharacterSO charSO;
-    [SerializeField] int level;
-    [SerializeField] int str;
-    [SerializeField] int defense;
-    [SerializeField] int energyPoint;
+    public CharacterSO charSO;
+    public int level;
+    public int str;
+    public int defense;
+    public int energyPoint;
+    public GameObject HPHUD;
 
     public CharacterSO Char { get{
         return charSO;
@@ -20,18 +22,18 @@ public class Character
     } }
 
     public int Exp {get; set;}
-    public int HP { get; set; }
-    public List<Skills> Skills { get; set; }
+    public int HP;
+    public List<Skills> Skilliard;
 
     public void Init(){
-        HP = MaxHP;
+        HP = charSO.MaxHP;
 
         // Assign Character Skills
-        Skills = new List<Skills>();
+        Skilliard = new List<Skills>();
         foreach ( var skill in Char.LearnableSkills){
             if (skill.Level <= Level)
-                Skills.Add(new Skills(skill.Skills));
-            if (Skills.Count >= CharacterSO.MaxNumOfMoves)
+                Skilliard.Add(new Skills(skill.Skills));
+            if (Skilliard.Count >= CharacterSO.MaxNumOfMoves)
                 break;
         }
 
@@ -51,14 +53,15 @@ public class Character
     }
 
     public void LearnSkill(LearnableSkills skillToLearn){
-        if (Skills.Count > CharacterSO.MaxNumOfMoves)
+        if (Skilliard.Count > CharacterSO.MaxNumOfMoves)
             return;
 
-        Skills.Add(new Skills(skillToLearn.Skills));
+        Skilliard.Add(new Skills(skillToLearn.Skills));
     }
 
     public int Attack {
-        get { return Mathf.FloorToInt((Char.Strength * Level)/ 100f)+5; }
+        get { return Mathf.FloorToInt((Char.Strength * Level)/ 100f)+5;
+         }
     }
 
     //Mathf.FloorToInt((_char.[ATTRIBUTE] * level)/ 100f)+5
@@ -69,7 +72,7 @@ public class Character
         }
     }
 
-    public DamageDetails TakeDamage(Skills skill, Character attacker){
+    public DamageDetails TakeDamage(Skills skill, Character attacker, bool isDecelerate){
         var damageDetails = new DamageDetails(){
             Fainted = false
         };
@@ -78,6 +81,7 @@ public class Character
         float a = (1*attacker.Level + 10)/ 250f;
         float d = a * skill.Skill.Power * ((float) attacker.Attack) + 2;
         int damage = Mathf.FloorToInt(d * modifiers);
+        if(isDecelerate) damage = Mathf.FloorToInt(damage/2);
 
         HP -= damage;
         if (HP <= 0){
@@ -89,8 +93,12 @@ public class Character
     }
 
     public Skills GetRandomSkill(){
-        int r = Random.Range(0, Skills.Count);
-        return Skills[r];
+        int r = Random.Range(0, Skilliard.Count);
+        return Skilliard[r];
+    }
+
+    public void UpdateHPUD(){
+        HPHUD.GetComponent<Slider>().value = HP;
     }
 }
 

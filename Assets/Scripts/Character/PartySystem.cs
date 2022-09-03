@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PartySystem : MonoBehaviour
 {
-    [SerializeField] List<Character> characters;
+    public List<Character> characters;
 
     void Start(){
         foreach (var character in characters){

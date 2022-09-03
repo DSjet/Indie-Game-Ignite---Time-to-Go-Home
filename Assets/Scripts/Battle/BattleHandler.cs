@@ -2,48 +2,76 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum BattleState { Start, ActionSelection, MoveSelection, PerformMove, Busy, BattleOver }
 
 public class BattleHandler : MonoBehaviour
 {
-    [SerializeField] List<BattleUnit> playerUnits;
-    [SerializeField] List<BattleUnit> enemyUnits;
+    public List<BattleUnit> playerUnits;
+    public List<BattleUnit> enemyUnits;
     [SerializeField] BattleDialogue battleDialogue;
 
     public event Action<bool> OnBattleOver;
 
     BattleState state;
     int currentAction;
-    int currentMove;
+    public int currentMove;
 
-    PartySystem playerParty;
-    PartySystem enemyParty;
+    public PartySystem playerParty;
+    public PartySystem enemyParty;
+    public Character currentCharacter;
+    public AddGameObjectFile addSprite;
+    public bool GoToNextEncounterScene;
+    public MoveWorld moveWorld;
+    public TimeWorld timeWorld;
 
-    public void StartBattle(PartySystem playerParty, PartySystem enemyParty){
-        this.playerParty = playerParty;
-        this.enemyParty = enemyParty;
+    public bool playerUseDecelerate = false;
+
+    public void EnSceneNext(){
+        //if(GoToNextEncounterScene){
+            moveWorld.MoveScene("SceneEncounterData");
+        //}
+    }
+
+    public void StartBattle(){
+        foreach(Character c in playerParty.characters){
+            c.HPHUD = addSprite.addHP(GameObject.Find("PlayerSide").transform.GetChild(0).gameObject, c.charSO);
+        }
+        foreach(Character c in enemyParty.characters){
+            c.HPHUD = addSprite.addHP(GameObject.Find("EnemySide").transform.GetChild(0).gameObject, c.charSO);
+        }
+        if(WinnerBattleData.isRetrying){
+            TimeWorld.TimeHour = WinnerBattleData.savedTimeHour;
+            TimeWorld.TimeMinute = WinnerBattleData.savedTimeMinute;
+            TimeWorld.TimeSecond = WinnerBattleData.savedTimeSecond;
+            TimeWorld.TimeMiliSecond = WinnerBattleData.savedTimeMiliSecond;
+            WinnerBattleData.isRetrying = false;
+        }else{
+            WinnerBattleData.savedTimeHour = TimeWorld.TimeHour;
+            WinnerBattleData.savedTimeMinute = TimeWorld.TimeMinute;
+            WinnerBattleData.savedTimeSecond = TimeWorld.TimeSecond;
+            WinnerBattleData.savedTimeMiliSecond = TimeWorld.TimeMiliSecond;
+        }
         StartCoroutine(SetupBattle());
     }
 
     private IEnumerator SetupBattle()
     {
-        for(var i = 0; i < playerUnits.Count; i++){
-            playerUnits[i].Setup(playerParty.GetHealthyCharacter());
-        }
-
-        for(var i = 0; i < enemyUnits.Count; i++){
-            enemyUnits[i].Setup(enemyParty.GetHealthyCharacter());
-        }
-
-        yield return battleDialogue.TypeDialogue($"{enemyUnits[0].Char.Char.CharName} challengged you to a time duel!");
+        yield return battleDialogue.TypeDialogue($"{enemyParty.characters[0].charSO.name} challenged you to a time duel!");
         yield return new WaitForSeconds(1f);
-
+        //-----setup
+        playerParty.characters[0].Init();
+        foreach(Character c in enemyParty.characters){
+            c.Init();
+        }
+        //------------
         ActionSelection();
     }
 
     void BattleOver(bool won){
         state = BattleState.BattleOver;
+        EnSceneNext();
         OnBattleOver(won);
     }
 
@@ -52,13 +80,17 @@ public class BattleHandler : MonoBehaviour
         state = BattleState.ActionSelection;
         StartCoroutine(battleDialogue.TypeDialogue("Choose an action"));
         battleDialogue.EnableActionSelector(true);
+        battleDialogue.EnableMoveSelector(false);
     }
 
-    private void MoveSelection(){
+    public void MoveSelection(){
         state = BattleState.MoveSelection;
         battleDialogue.EnableActionSelector(false);
         battleDialogue.EnableDialogueText(false);
         battleDialogue.EnableMoveSelector(true);
+        currentCharacter = playerParty.characters[0];
+        battleDialogue.SetSkillNames(currentCharacter.Skilliard);
+        battleDialogue.UpdateMoveSelection();
     }
 
     public void HandleUpdate() {
@@ -93,73 +125,64 @@ public class BattleHandler : MonoBehaviour
             }
         }
     }
-    private void HandleMoveSelection()
+    public void HandleMoveSelection()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow)){
-            if (currentMove < playerUnits[0].Char.Skills.Count - 1){
-                ++currentMove;
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow)){
-            if(currentMove > 0){
-                --currentMove;
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow)){
-            if (currentMove < playerUnits[0].Char.Skills.Count - 2){
-                currentMove += 2;
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.UpArrow)){
-            if(currentMove > 1){
-                currentMove -= 2;
-            }
-        }
-
-        battleDialogue.UpdateMoveSelection(currentMove, playerUnits[0].Char.Skills[currentMove]); // sementara ini di set ke first character karena belum implement party system
-
-        if (Input.GetKeyDown(KeyCode.Z)){
-            battleDialogue.EnableMoveSelector(false);
-            battleDialogue.EnableDialogueText(true);
-            StartCoroutine(PlayerMove());
-        }
+        battleDialogue.EnableMoveSelector(false);
+        battleDialogue.EnableDialogueText(true);
+        StartCoroutine(PlayerMove());
     }
 
     private IEnumerator PlayerMove()
     {
         state = BattleState.Busy;
-        var move = playerUnits[0].Char.Skills[currentMove];
-        yield return RunMove(playerUnits[0], enemyUnits[0], move);
-
-        if(state == BattleState.PerformMove)
-            StartCoroutine(EnemyMove());
+        var move = currentCharacter.Skilliard[currentMove];
+        yield return RunMove(currentCharacter, enemyParty.characters[0], move);
     }
 
-    IEnumerator RunMove(BattleUnit sourceUnit, BattleUnit targetUnit, Skills skill){
-        yield return battleDialogue.TypeDialogue("bla bla bla use this move");
-
+    IEnumerator RunMove(Character sourceUnit, Character targetUnit, Skills skill){
+        if(skill.ManaCost > 0){
+            timeWorld.changeTimer(-10);
+        }
+        Debug.Log(playerUseDecelerate);
+        var damageDetails = targetUnit.TakeDamage(skill, targetUnit, playerUseDecelerate);
+        targetUnit.UpdateHPUD();
+        // Play hit animation
+        if(playerUseDecelerate && sourceUnit.charSO.CharName != "Player"){
+            yield return battleDialogue.TypeDialogue($"{targetUnit.charSO.CharName} blocked half {skill.Skill.SkillName} from {sourceUnit.charSO.CharName} using Decelerate.");
+            playerUseDecelerate = false;
+        }else{
+            yield return battleDialogue.TypeDialogue($"{sourceUnit.charSO.CharName} attacks with {skill.Skill.SkillName}.");
+        }
         // Play attack animation
         yield return new WaitForSeconds(1f);
-
-        // Play hit animation
-        var damageDetails = targetUnit.Char.TakeDamage(skill, playerUnits[0].Char);
-        targetUnit.HUD.UpdateHP();
-
-        if (targetUnit.Char.HP <= 0){
-            yield return HandleEnemyFainted(targetUnit);
+        if(skill.Skill.SkillName == "Decelerate"){
+            playerUseDecelerate = true;
         }
-        else {
+
+        if (targetUnit.HP <= 0){
+            WinnerBattleData.Winner = sourceUnit;
+            yield return HandleEnemyFainted(targetUnit);
+        } else if(sourceUnit.charSO.CharName == "You"){
             StartCoroutine(EnemyMove());
+        } else if(sourceUnit.charSO.CharName != "You"){
+            ActionSelection();
         }
     }
 
-    IEnumerator HandleEnemyFainted(BattleUnit faintedUnit){
-        yield return battleDialogue.TypeDialogue("bla bla bla enemy fainted");
+    private IEnumerator EnemyMove()
+    {
+        state = BattleState.PerformMove;
+        var move = enemyParty.characters[0].GetRandomSkill();
+        yield return RunMove(enemyParty.characters[0], playerParty.characters[0], move);
+    }
+
+    IEnumerator HandleEnemyFainted(Character faintedUnit){
+        yield return battleDialogue.TypeDialogue($"{faintedUnit.charSO.CharName} has fainted!");
         // enemy faint animation
 
         yield return new WaitForSeconds(2f);
 
-        if (!faintedUnit.IsFriendlyUnit){
+        /*if (!faintedUnit.IsFriendlyUnit){
             // Exp Gain
             int expYield = faintedUnit.Char.Char.ExpYield;
             int enemyLevel = faintedUnit.Char.Level;
@@ -173,10 +196,10 @@ public class BattleHandler : MonoBehaviour
                 // Try to learn a new skill
                 var newSkill = playerUnits[0].Char.GetLearnableSkillsMoveAtCurrLevel();
                 if (newSkill != null){
-                    if (playerUnits[0].Char.Skills.Count < CharacterSO.MaxNumOfMoves){
+                    if (playerUnits[0].Char.Skilliard.Count < CharacterSO.MaxNumOfMoves){
                         playerUnits[0].Char.LearnSkill(newSkill);
                         yield return battleDialogue.TypeDialogue("learned new move");
-                        battleDialogue.SetSkillNames(playerUnits[0].Char.Skills);
+                        battleDialogue.SetSkillNames(playerUnits[0].Char.Skilliard);
                     }
                     else {
                         // Forget an old move
@@ -184,35 +207,32 @@ public class BattleHandler : MonoBehaviour
                 }
                 // update hud
             }
-        }
+        }*/
 
         CheckForBattleOver(faintedUnit);
     }
 
-    void CheckForBattleOver(BattleUnit faintedUnit){
-        if (faintedUnit.IsFriendlyUnit){
+    void CheckForBattleOver(Character faintedUnit){
+        if (faintedUnit.charSO.CharName == "You"){
             // check if there is still a friendly character in party
-            // call BattleOver(false) since the player lost the battle
+            BattleOver(false);
         } else {
             BattleOver(true);
         }
     }
 
-    private IEnumerator EnemyMove()
-    {
-        state = BattleState.PerformMove;
-        var move = enemyUnits[0].Char.GetRandomSkill();
-        yield return RunMove(enemyUnits[0], playerUnits[0], move);
-        if(state == BattleState.PerformMove)
-            ActionSelection();
+    public void failEscape(){
+        StartCoroutine(TryToEscape());
     }
 
     IEnumerator TryToEscape(){
         state = BattleState.Busy;
 
         //if(condition){
-            yield return battleDialogue.TypeDialogue("Successfully escaped");
-            BattleOver(true);
+            yield return battleDialogue.TypeDialogue("Failed to escape...");
+            state = BattleState.MoveSelection;
+            MoveSelection();
+
         //}
 
         // else if (condition)

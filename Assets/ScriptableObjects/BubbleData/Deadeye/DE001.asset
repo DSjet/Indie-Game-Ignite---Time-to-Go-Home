@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fbb5fcf79ee1dd4b956d50863d9cb08, type: 3}
+  m_Name: DE001
+  m_EditorClassIdentifier: 
+  yOffset: 0
+  Dialogue:
+  - Tag: DeadEye
+    text:
+    - Well, well, well.
+    - "Look who we got here, it\u2019s Little One."
+    PlayAudio: {fileID: 0}
+  - Tag: Player
+    text:
+    - Nice to meet you again, Deadeye.
+    PlayAudio: {fileID: 0}
+  - Tag: DeadEye
+    text:
+    - You look younger, what happened to you?
+    - What kind of drug did they give you?
+    - It reminds me of the old you.
+    - Remember Little One?
+    - When we used to fight over our territory.
+    PlayAudio: {fileID: 0}
+  - Tag: Player
+    text:
+    - Yes, but as usual, I prefer to leave that memory behind.
+    PlayAudio: {fileID: 0}
+  - Tag: DeadEye
+    text:
+    - Then why are you here this early in the morning?
+    PlayAudio: {fileID: 0}
+  - Tag: Player
+    text:
+    - A lot of things happen.
+    - So, I am now on a journey to meet the old lady that adopted me way back.
+    PlayAudio: {fileID: 0}
+  - Tag: DeadEye
+    text:
+    - 'I think the drug they gave you messed with your head, Little One. '
+    - You know how far it is right?
+    - You are crazy, Little One, crazy I say!
+    PlayAudio: {fileID: 0}
+  - Tag: Player
+    text:
+    - I have time.
+    PlayAudio: {fileID: 0}
+  - Tag: DeadEye
+    text:
+    - HAHAHAHA
+    - You are funny, Little One.
+    - How about we knock some senses into you, huh?
+    - Are you up for a fight just like the old days?
+    PlayAudio: {fileID: 0}
+  - Tag: Player
+    text:
+    - Well, I also want to try my new power.
+    - "So, sure. Let\u2019s have a fight."
+    PlayAudio: {fileID: 0}
+  - Tag: DeadEye
+    text:
+    - "That\u2019s more like you!"
+    PlayAudio: {fileID: 0}

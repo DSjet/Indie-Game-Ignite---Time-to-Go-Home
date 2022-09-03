@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class DialogueSystems : MonoBehaviour
 {
@@ -14,8 +15,12 @@ public class DialogueSystems : MonoBehaviour
     private Queue<string> sentences = new Queue<string>();
 
     public bool isOpen = false;
+    private bool isTriggerAfter;
+    private UnityEvent ev;
 
-    public void startDialogue(DialogueData[] data){
+    public void startDialogue(DialogueData[] data, bool isAfterTrigger, UnityEvent ev){
+        isTriggerAfter = isAfterTrigger;
+        this.ev = ev;
         GameManager.Instance.ChangeState(GameState.CutScene);
         TimeWorld.pauseTimer();
         dialogueWindow.SetActive(true);
@@ -75,6 +80,8 @@ public class DialogueSystems : MonoBehaviour
         dialogueWindow.SetActive(false);
         GameManager.Instance.ChangeState(GameState.FreeRoam);
         TimeWorld.startTimer();
-        //End Dialogue
+        if(isTriggerAfter){
+            ev?.Invoke();
+        }
     }
 }

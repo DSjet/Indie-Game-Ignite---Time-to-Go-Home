@@ -15,6 +15,7 @@ public class BattleDialogue : MonoBehaviour
 
     [SerializeField] List<TMP_Text> actionTexts;
     [SerializeField] List<TMP_Text> moveTexts;
+    [SerializeField] List<Button> buttonsMove;
 
     [SerializeField] TMP_Text manaCost;
     [SerializeField] TMP_Text damageAmount;
@@ -56,24 +57,35 @@ public class BattleDialogue : MonoBehaviour
         }
     }
 
-    public void UpdateMoveSelection(int selectedMove, Skills skill){
-        for (int i = 0; i < actionTexts.Count; ++i){
-            if ( i == selectedMove)
-                moveTexts[i].color = highlightedColor;
-            else
-                moveTexts[i].color = Color.black;
+    public void UpdateMoveSelection(){
+        int selected = -1;
+        for (int i = 0; i < buttonsMove.Count; ++i){
+            if (buttonsMove[i].GetComponent<ButtonOnHover>().onHover){
+                selected = i;
+                break;
+            }
         }
-
-        manaCost.text = $"Mana Cost: {skill.ManaCost}/ {skill.Skill.ManaCost}";
-        damageAmount.text = skill.Skill.Power.ToString();
+        Debug.Log(selected);
+        BattleHandler bt = GameObject.FindObjectOfType<BattleHandler>();
+        bt.currentMove = selected;
+        if(selected != -1){
+            manaCost.text = $"Time Cost: {bt.currentCharacter.Skilliard[selected].Skill.ManaCost}";
+            damageAmount.text = bt.currentCharacter.Skilliard[selected].Skill.Power.ToString();
+        }else{
+            manaCost.text = "";
+            damageAmount.text = "";
+        }        
     }
 
     public void SetSkillNames(List<Skills> skills){
-        for (int i = 0; i < moveTexts.Count; ++i){
-            if ( i < skills.Count)
+        for (int i = 0; i < moveTexts.Count; i++){
+            if ( i < skills.Count){
+                buttonsMove[i].interactable = true;
                 moveTexts[i].text = skills[i].Skill.SkillName;
-            else 
-                moveTexts[i].text = "-";
+            }else{
+                moveTexts[i].text = "";
+                buttonsMove[i].interactable = false;
+            } 
         }
     }
 }

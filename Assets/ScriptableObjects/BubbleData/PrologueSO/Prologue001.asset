@@ -31,7 +31,7 @@ MonoBehaviour:
   ifBattleNotCalled:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2595246365372112561, guid: 0319fdc9cba9bc54b97cdb6376ad4609, type: 3}
+      - m_Target: {fileID: 1934693436636725753, guid: 5095215dc11fc1246a8318de0c0ef7d9, type: 3}
         m_TargetAssemblyTypeName: MoveWorld, Assembly-CSharp
         m_MethodName: MoveScene
         m_Mode: 5

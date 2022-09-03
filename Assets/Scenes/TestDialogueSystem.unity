@@ -155,6 +155,7 @@ MonoBehaviour:
   dialogueText: {fileID: 340361395}
   nameText: {fileID: 328972433}
   dialogueWindow: {fileID: 2022164931}
+  timer: {fileID: 0}
   isOpen: 0
 --- !u!4 &57848127
 Transform:
@@ -749,8 +750,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f1486364c79804bbf6b8baf442db53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeRange: 10
-  tapRange: 5
+  moveSpeed: 5
+  doneWaitForMove: 1
 --- !u!4 &1624259474
 Transform:
   m_ObjectHideFlags: 0

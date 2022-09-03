@@ -9,12 +9,12 @@ public class ChangeEncounterData : MonoBehaviour
     public BubbleDataSO DialogueData;
     public SpriteData[] playerParty;
     public SpriteData[] enemyParty;
-    public UnityEvent battleNotCalledEvent;
+    public string moveSceneTo;
     public void changeData(){
         EncounterSceneHandler.isContinuingWithBattle = isContinuingWithBattle;
         EncounterSceneHandler.DialogueDataSO = DialogueData;
         EncounterSceneHandler.playerParty = playerParty;
         EncounterSceneHandler.enemyParty = enemyParty;
-        EncounterSceneHandler.BattleNotCalledEvent = battleNotCalledEvent;
+        EncounterSceneHandler.moveSceneTo = moveSceneTo;
     }
 }

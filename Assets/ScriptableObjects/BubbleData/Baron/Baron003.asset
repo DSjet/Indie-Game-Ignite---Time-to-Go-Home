@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fbb5fcf79ee1dd4b956d50863d9cb08, type: 3}
+  m_Name: Baron003
+  m_EditorClassIdentifier: 
+  yOffset: 0
+  Dialogue:
+  - Tag: Cat God
+    text:
+    - I am gratefully sorry, Little One.
+    - It is not in my vision that such a tragedy occurs this early.
+    PlayAudio: {fileID: 0}
+  - Tag: Player
+    text:
+    - Are you the divine being that gave me this body?
+    PlayAudio: {fileID: 0}
+  - Tag: Cat God
+    text:
+    - Yes. It is I the time god, responsible for the endless flow of time.
+    PlayAudio: {fileID: 0}
+  - Tag: Player
+    text:
+    - I see...
+    - Then you have a lot of explaining to do.
+    PlayAudio: {fileID: 0}
+  - Tag: Cat God
+    text:
+    - It is expected.
+    - However...
+    - I am afraid that I may not be able to make everything sensible in the time
+      being.
+    - So for now, I will just say that you are my chosen one.
+    - I have granted you a fragment of my power
+    PlayAudio: {fileID: 0}
+  - Tag: Player
+    text:
+    - But why?
+    PlayAudio: {fileID: 0}
+  - Tag: Cat God
+    text:
+    - It is in my best interest to not answer that question now.
+    - What I can say however, is that I will grant you more of my power.
+    - But it is implored for you to use it wisely.
+    - "Your time is ticking and you don\u2019t want it to lose even faster, right?"
+    - It is best for you to keep heading toward your initial destination for now.
+    - Answers to all of your questions might just be revealed to you on your journey.
+    - ' Have a safe trip Little One, I will always be by your side.'
+    PlayAudio: {fileID: 0}

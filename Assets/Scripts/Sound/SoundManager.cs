@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
@@ -21,7 +22,16 @@ public class SoundManager : MonoBehaviour
         effectSource.PlayOneShot(audio);
     }
 
+    public void PlayMusic(AudioClip audio){
+        musicSource.clip = audio;
+        musicSource.Play();
+    }
+
     public void ChangeMasterVolume(float value){
-        AudioListener.volume = value;
+        effectSource.volume = value;
+    }
+
+    public void ChangeMasterVolumeMusic(float value){
+        musicSource.volume = value;
     }
 }
