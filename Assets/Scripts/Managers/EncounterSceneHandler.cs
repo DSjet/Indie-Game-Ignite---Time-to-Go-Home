@@ -12,5 +12,7 @@ public static class EncounterSceneHandler
     public static SpriteData[] enemyParty;
     public static string moveSceneTo;
 
+    public static AudioClip playMusic;
+
     //Saving and Load state
 }

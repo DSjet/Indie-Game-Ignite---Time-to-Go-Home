@@ -376,7 +376,9 @@ PlayableDirector:
   - key: {fileID: 4134578808066439973, guid: c343d6592070f644599bc154cf463820, type: 2}
     value: {fileID: 0}
   - key: {fileID: 2154801425231685671, guid: c343d6592070f644599bc154cf463820, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 222706460}
+  - key: {fileID: -8243543008212412700, guid: c343d6592070f644599bc154cf463820, type: 2}
+    value: {fileID: 222706461}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &222706459
@@ -436,6 +438,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 688fb001f974ddd43932e46efcd50ca9, type: 3}
+--- !u!82 &222706460 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7035124315612186271, guid: 688fb001f974ddd43932e46efcd50ca9, type: 3}
+  m_PrefabInstance: {fileID: 222706459}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &222706461 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7035124315873846623, guid: 688fb001f974ddd43932e46efcd50ca9, type: 3}
+  m_PrefabInstance: {fileID: 222706459}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &254719256
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,6 +556,7 @@ MonoBehaviour:
     characterSO: {fileID: 11400000, guid: 14d49974476624d48b05dfd8b90a7726, type: 2}
     level: 0
   moveSceneTo: Overworld
+  music: {fileID: 8300000, guid: ecd00a858f8191848b931c7d4a6cf5bb, type: 3}
 --- !u!4 &310695487
 Transform:
   m_ObjectHideFlags: 0

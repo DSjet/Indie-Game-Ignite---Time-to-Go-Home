@@ -10,11 +10,13 @@ public class ChangeEncounterData : MonoBehaviour
     public SpriteData[] playerParty;
     public SpriteData[] enemyParty;
     public string moveSceneTo;
+    public AudioClip music;
     public void changeData(){
         EncounterSceneHandler.isContinuingWithBattle = isContinuingWithBattle;
         EncounterSceneHandler.DialogueDataSO = DialogueData;
         EncounterSceneHandler.playerParty = playerParty;
         EncounterSceneHandler.enemyParty = enemyParty;
         EncounterSceneHandler.moveSceneTo = moveSceneTo;
+        EncounterSceneHandler.playMusic = music;
     }
 }

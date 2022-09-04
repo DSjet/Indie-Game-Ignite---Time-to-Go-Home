@@ -27,6 +27,11 @@ public class SoundManager : MonoBehaviour
         musicSource.Play();
     }
 
+    public void StopAllSound(){
+        effectSource.Stop();
+        musicSource.Stop();
+    }
+
     public void ChangeMasterVolume(float value){
         effectSource.volume = value;
     }

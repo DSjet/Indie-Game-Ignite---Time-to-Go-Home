@@ -593,6 +593,106 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 688fb001f974ddd43932e46efcd50ca9, type: 3}
+--- !u!1001 &649943587
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3480897635979092482, guid: 646c88f0544ae8c41a6e4074817d1488, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480897635979092482, guid: 646c88f0544ae8c41a6e4074817d1488, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 28.233883
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480897635979092482, guid: 646c88f0544ae8c41a6e4074817d1488, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 46.42115
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480897635979092482, guid: 646c88f0544ae8c41a6e4074817d1488, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480897635979092482, guid: 646c88f0544ae8c41a6e4074817d1488, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480897635979092482, guid: 646c88f0544ae8c41a6e4074817d1488, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480897635979092482, guid: 646c88f0544ae8c41a6e4074817d1488, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480897635979092482, guid: 646c88f0544ae8c41a6e4074817d1488, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480897635979092482, guid: 646c88f0544ae8c41a6e4074817d1488, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480897635979092482, guid: 646c88f0544ae8c41a6e4074817d1488, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480897635979092482, guid: 646c88f0544ae8c41a6e4074817d1488, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480897635979092484, guid: 646c88f0544ae8c41a6e4074817d1488, type: 3}
+      propertyPath: m_Name
+      value: TriggerSound
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 646c88f0544ae8c41a6e4074817d1488, type: 3}
+--- !u!1 &649943588 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3480897635979092484, guid: 646c88f0544ae8c41a6e4074817d1488, type: 3}
+  m_PrefabInstance: {fileID: 649943587}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &649943589 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3480897635979092483, guid: 646c88f0544ae8c41a6e4074817d1488, type: 3}
+  m_PrefabInstance: {fileID: 649943587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649943588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb4693f9d743e3f4ba0e016270dd2c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &649943590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649943588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c669b29e6a21db4aa4a95d2f6dd1a7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ev:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 649943589}
+        m_TargetAssemblyTypeName: TriggerSound, Assembly-CSharp
+        m_MethodName: changeMusic
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 9ea7d1b0d7717fa4291377d865768c6e, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &822413054
 GameObject:
   m_ObjectHideFlags: 0

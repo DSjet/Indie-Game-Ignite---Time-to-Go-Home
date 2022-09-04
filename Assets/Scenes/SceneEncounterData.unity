@@ -165,6 +165,7 @@ MonoBehaviour:
     characterSO: {fileID: 11400000, guid: ccdbfe76da003f941a3f79ff902e23d1, type: 2}
     level: 0
   moveSceneTo: FillerBaron001
+  music: {fileID: 8300000, guid: d80b154deef85be489ad8e15c2b182ed, type: 3}
 --- !u!4 &46286427
 Transform:
   m_ObjectHideFlags: 0
@@ -221,6 +222,7 @@ MonoBehaviour:
     characterSO: {fileID: 11400000, guid: ccdbfe76da003f941a3f79ff902e23d1, type: 2}
     level: 0
   moveSceneTo: Overworld
+  music: {fileID: 8300000, guid: d80b154deef85be489ad8e15c2b182ed, type: 3}
 --- !u!4 &141382247
 Transform:
   m_ObjectHideFlags: 0

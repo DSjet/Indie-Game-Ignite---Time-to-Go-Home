@@ -10,6 +10,8 @@ public class SetupEncounters : MonoBehaviour
     public PartySystem playerParty;
     public PartySystem enemyParty;
 
+    public TriggerSound music;
+
     void Start(){
         bubbleDialogue.Data = EncounterSceneHandler.DialogueDataSO;
         bubbleDialogue.ContinueWithBattle = EncounterSceneHandler.isContinuingWithBattle;
@@ -31,5 +33,7 @@ public class SetupEncounters : MonoBehaviour
         }
         battleHandler.enemyParty = enemyParty;
         bubbleDialogue.triggerDialogue();
+        if(music != null)
+            music.changeMusic(EncounterSceneHandler.playMusic);
     }
 }

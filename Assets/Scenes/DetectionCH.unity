@@ -337,6 +337,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 688fb001f974ddd43932e46efcd50ca9, type: 3}
+--- !u!82 &815679794 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7035124315873846623, guid: 688fb001f974ddd43932e46efcd50ca9, type: 3}
+  m_PrefabInstance: {fileID: 815679793}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &872346422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -677,6 +682,8 @@ PlayableDirector:
     value: {fileID: 1470205499}
   - key: {fileID: 7423263774026904081, guid: f943676dac0acf84e9a4ef2806378d59, type: 2}
     value: {fileID: 1470205495}
+  - key: {fileID: 7383315358396151337, guid: f943676dac0acf84e9a4ef2806378d59, type: 2}
+    value: {fileID: 815679794}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &1470205499
@@ -699,7 +706,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I think you have another "helper".
+  m_text: Well, in that case.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3695da5520c611c46bf5f1df1ef0737c, type: 2}
   m_sharedMaterial: {fileID: -8766374672577596149, guid: 3695da5520c611c46bf5f1df1ef0737c, type: 2}

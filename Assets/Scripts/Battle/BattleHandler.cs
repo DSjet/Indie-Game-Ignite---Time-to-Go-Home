@@ -22,6 +22,8 @@ public class BattleHandler : MonoBehaviour
     public AddGameObjectFile addSprite;
     public MoveWorld moveWorld;
     public TimeWorld timeWorld;
+    public TriggerSound music;
+    public AudioClip audio;
 
     public bool playerUseDecelerate = false;
 
@@ -48,6 +50,7 @@ public class BattleHandler : MonoBehaviour
             WinnerBattleData.savedTimeSecond = TimeWorld.TimeSecond;
             WinnerBattleData.savedTimeMiliSecond = TimeWorld.TimeMiliSecond;
         }
+        music.changeMusic(audio);
         StartCoroutine(SetupBattle());
     }
 

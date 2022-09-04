@@ -179,6 +179,7 @@ MonoBehaviour:
     characterSO: {fileID: 11400000, guid: 14d49974476624d48b05dfd8b90a7726, type: 2}
     level: 0
   moveSceneTo: TutorialScene
+  music: {fileID: 8300000, guid: ecd00a858f8191848b931c7d4a6cf5bb, type: 3}
 --- !u!114 &162970404 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1934693436636725753, guid: 5095215dc11fc1246a8318de0c0ef7d9, type: 3}
@@ -575,7 +576,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3695da5520c611c46bf5f1df1ef0737c, type: 2}
   m_sharedMaterial: {fileID: -8766374672577596149, guid: 3695da5520c611c46bf5f1df1ef0737c, type: 2}
@@ -816,6 +817,8 @@ PlayableDirector:
     value: {fileID: 719820971}
   - key: {fileID: -7141221869893615734, guid: be6ae7fc6fe9d8e4dbe62742960529b3, type: 2}
     value: {fileID: 587816753}
+  - key: {fileID: 1607555543626224298, guid: be6ae7fc6fe9d8e4dbe62742960529b3, type: 2}
+    value: {fileID: 1832317487}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &1576035810
@@ -893,6 +896,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576035810}
   m_CullTransparentMesh: 1
+--- !u!82 &1832317487 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7035124315873846623, guid: 688fb001f974ddd43932e46efcd50ca9, type: 3}
+  m_PrefabInstance: {fileID: 7035124317099125101}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2023231002
 GameObject:
   m_ObjectHideFlags: 0

@@ -881,6 +881,7 @@ MonoBehaviour:
     characterSO: {fileID: 11400000, guid: ccdbfe76da003f941a3f79ff902e23d1, type: 2}
     level: 0
   moveSceneTo: 
+  music: {fileID: 8300000, guid: d80b154deef85be489ad8e15c2b182ed, type: 3}
 --- !u!114 &423837857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31311,6 +31312,7 @@ MonoBehaviour:
     characterSO: {fileID: 11400000, guid: bfbb509bf3ef9f44bace7b7f419ba99c, type: 2}
     level: 0
   moveSceneTo: 
+  music: {fileID: 8300000, guid: d80b154deef85be489ad8e15c2b182ed, type: 3}
 --- !u!1 &2034845535
 GameObject:
   m_ObjectHideFlags: 0
