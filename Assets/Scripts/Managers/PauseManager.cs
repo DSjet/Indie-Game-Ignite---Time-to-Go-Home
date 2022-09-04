@@ -22,6 +22,7 @@ public class PauseManager : MonoBehaviour
 
     public void OnExitButtonClick(){
         Time.timeScale = 1;
+        TimeWorld.isShowed = false;
         SceneManager.LoadScene(0);
     }
 }

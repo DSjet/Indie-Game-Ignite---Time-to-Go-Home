@@ -61,4 +61,8 @@ public class TimeWorld : MonoBehaviour
         if(isShowed)
             timerText.text = $"{TimeHour:00}:{TimeMinute:00}:{TimeSecond:00}";
     }
+
+    public void resetShowed(){
+        isShowed = false;
+    }
 }
