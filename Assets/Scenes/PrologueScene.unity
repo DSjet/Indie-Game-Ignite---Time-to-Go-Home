@@ -978,6 +978,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sound Systems
       objectReference: {fileID: 0}
+    - target: {fileID: 7035124315873846623, guid: 688fb001f974ddd43932e46efcd50ca9, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9ea7d1b0d7717fa4291377d865768c6e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 688fb001f974ddd43932e46efcd50ca9, type: 3}
 --- !u!1001 &8240481353027004782
