@@ -31,10 +31,10 @@ public class BubbleSystems : MonoBehaviour
         textObject = Text.gameObject.GetComponent<RectTransform>();
         initialTextSize = textObject.rect.size;
         moveSceneTo = EncounterSceneHandler.moveSceneTo;
-        GameManager.Instance.ChangeState(GameState.CutScene);
     }
 
     public void startDialogue(BubbleDataSO data, bool startBattle){
+        GameManager.Instance.ChangeState(GameState.CutScene);
         Dialogues.Clear();
         TimeWorld.pauseTimer();
         foreach(BubbleDataType dialog in data.Dialogue){
@@ -63,7 +63,7 @@ public class BubbleSystems : MonoBehaviour
     }
 
     IEnumerator moveToNextSentence(){
-        yield return new WaitUntil(()=> Input.GetMouseButtonDown(0));
+        yield return new WaitUntil(()=> Input.anyKey);
         showNextDialogue();
     }
 

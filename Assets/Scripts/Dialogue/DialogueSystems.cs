@@ -63,7 +63,7 @@ public class DialogueSystems : MonoBehaviour
     }
 
     IEnumerator moveSentence(){
-        yield return new WaitUntil(() => Input.anyKeyDown);
+        yield return new WaitUntil(() => Input.anyKey);
         nextSentences();
     }
 

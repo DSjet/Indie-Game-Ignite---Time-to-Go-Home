@@ -41,7 +41,7 @@ public class TimeWorld : MonoBehaviour
     }
 
     void FixedUpdate(){
-        if(!isTimePaused){
+        if(!isTimePaused && isShowed){
             if(--TimeMiliSecond < 0){
                 TimeMiliSecond = 50;
                 if(--TimeSecond < 0){

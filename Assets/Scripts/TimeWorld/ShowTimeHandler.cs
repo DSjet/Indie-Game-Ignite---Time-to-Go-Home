@@ -10,6 +10,8 @@ public class ShowTimeHandler : MonoBehaviour
         if(TimeWorld.isShowed){
             Timebox.SetActive(true);
         }else{
+            TimeWorld.TimeSecond = 10;
+            TimeWorld.pauseTimer();
             Timebox.SetActive(false);
             TimeWorld.isShowed = true;
         }

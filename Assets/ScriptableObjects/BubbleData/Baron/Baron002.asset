@@ -20,6 +20,3 @@ MonoBehaviour:
     - You might not understand what happened here but,
     - your life ends now.
     PlayAudio: {fileID: 0}
-  - Tag: 
-    text: []
-    PlayAudio: {fileID: 8300000, guid: 6df27d38b2696e945a2f4943a7b94407, type: 3}
