@@ -791,6 +791,7 @@ MonoBehaviour:
   - {fileID: 44328347}
   manaCost: {fileID: 741047534}
   damageAmount: {fileID: 1115045330}
+  battleHandler: {fileID: 971596926}
 --- !u!1 &208003544
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;
 
     void Start(){
-       rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update(){

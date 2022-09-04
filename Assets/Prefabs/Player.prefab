@@ -182,7 +182,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  doneWaitForMove: 1
 --- !u!50 &3213685780980904158
 Rigidbody2D:
   serializedVersion: 4
@@ -226,7 +225,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 3213685780980904154}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: f43d0caf76820f443981af4457b762c1, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

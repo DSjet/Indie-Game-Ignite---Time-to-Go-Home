@@ -19,6 +19,7 @@ public class BattleDialogue : MonoBehaviour
 
     [SerializeField] TMP_Text manaCost;
     [SerializeField] TMP_Text damageAmount;
+    public BattleHandler battleHandler;
 
     public void SetDialogue(string dialogue){
         dialogueText.text = dialogue;
@@ -64,12 +65,11 @@ public class BattleDialogue : MonoBehaviour
                 selected = i;
                 break;
             }
-        }
-        BattleHandler bt = GameObject.FindObjectOfType<BattleHandler>();
-        bt.currentMove = selected;
-        if(selected != -1){
-            manaCost.text = $"Time Cost: {bt.currentCharacter.Skilliard[selected].Skill.ManaCost}";
-            damageAmount.text = bt.currentCharacter.Skilliard[selected].Skill.Power.ToString();
+        } 
+        if(selected > -1){
+            battleHandler.currentMove = selected;
+            manaCost.text = $"Time Cost: {battleHandler.currentCharacter.Skilliard[selected].Skill.ManaCost}";
+            damageAmount.text = battleHandler.currentCharacter.Skilliard[selected].Skill.Power.ToString();
         }else{
             manaCost.text = "";
             damageAmount.text = "";
