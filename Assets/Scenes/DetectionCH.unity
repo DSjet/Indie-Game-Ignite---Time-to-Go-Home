@@ -572,6 +572,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoveSceneManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6207079077975339847, guid: 5095215dc11fc1246a8318de0c0ef7d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5095215dc11fc1246a8318de0c0ef7d9, type: 3}
 --- !u!114 &1407541681 stripped
@@ -697,8 +701,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: I think you have another "helper".
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3695da5520c611c46bf5f1df1ef0737c, type: 2}
+  m_sharedMaterial: {fileID: -8766374672577596149, guid: 3695da5520c611c46bf5f1df1ef0737c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -722,8 +726,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

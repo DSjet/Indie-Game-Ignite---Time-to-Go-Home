@@ -214,6 +214,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1262580718806063075, guid: 7d6e61f6a1f2fc14ea2d4a47571a19bd, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262580718806063075, guid: 7d6e61f6a1f2fc14ea2d4a47571a19bd, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262580718806063075, guid: 7d6e61f6a1f2fc14ea2d4a47571a19bd, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262580718806063075, guid: 7d6e61f6a1f2fc14ea2d4a47571a19bd, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262580718806063075, guid: 7d6e61f6a1f2fc14ea2d4a47571a19bd, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 2193091417101147806, guid: 7d6e61f6a1f2fc14ea2d4a47571a19bd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -242,9 +262,25 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 5614343336493333304, guid: 7d6e61f6a1f2fc14ea2d4a47571a19bd, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 026bfdc181961344398fb85edc664786, type: 3}
+    - target: {fileID: 5614343336493333304, guid: 7d6e61f6a1f2fc14ea2d4a47571a19bd, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5614343336493333304, guid: 7d6e61f6a1f2fc14ea2d4a47571a19bd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6258241109017083740, guid: 7d6e61f6a1f2fc14ea2d4a47571a19bd, type: 3}
       propertyPath: m_Name
       value: MainMenuCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6258241109017083740, guid: 7d6e61f6a1f2fc14ea2d4a47571a19bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6874936405878091993, guid: 7d6e61f6a1f2fc14ea2d4a47571a19bd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -277,6 +313,14 @@ PrefabInstance:
     - target: {fileID: 6874936405878091993, guid: 7d6e61f6a1f2fc14ea2d4a47571a19bd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8567705744470652873, guid: 7d6e61f6a1f2fc14ea2d4a47571a19bd, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9146884182816582509, guid: 7d6e61f6a1f2fc14ea2d4a47571a19bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d6e61f6a1f2fc14ea2d4a47571a19bd, type: 3}
@@ -388,7 +432,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -536,6 +580,10 @@ PrefabInstance:
     - target: {fileID: 6207079077975339847, guid: 5095215dc11fc1246a8318de0c0ef7d9, type: 3}
       propertyPath: m_Name
       value: MoveSceneManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6207079077975339847, guid: 5095215dc11fc1246a8318de0c0ef7d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5095215dc11fc1246a8318de0c0ef7d9, type: 3}
