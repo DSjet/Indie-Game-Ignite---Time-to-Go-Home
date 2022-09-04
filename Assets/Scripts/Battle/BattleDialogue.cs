@@ -65,7 +65,6 @@ public class BattleDialogue : MonoBehaviour
                 break;
             }
         }
-        Debug.Log(selected);
         BattleHandler bt = GameObject.FindObjectOfType<BattleHandler>();
         bt.currentMove = selected;
         if(selected != -1){

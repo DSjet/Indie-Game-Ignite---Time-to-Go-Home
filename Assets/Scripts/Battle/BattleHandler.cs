@@ -8,8 +8,6 @@ public enum BattleState { Start, ActionSelection, MoveSelection, PerformMove, Bu
 
 public class BattleHandler : MonoBehaviour
 {
-    public List<BattleUnit> playerUnits;
-    public List<BattleUnit> enemyUnits;
     [SerializeField] BattleDialogue battleDialogue;
 
     public event Action<bool> OnBattleOver;
@@ -22,16 +20,13 @@ public class BattleHandler : MonoBehaviour
     public PartySystem enemyParty;
     public Character currentCharacter;
     public AddGameObjectFile addSprite;
-    public bool GoToNextEncounterScene;
     public MoveWorld moveWorld;
     public TimeWorld timeWorld;
 
     public bool playerUseDecelerate = false;
 
     public void EnSceneNext(){
-        //if(GoToNextEncounterScene){
-            moveWorld.MoveScene("SceneEncounterData");
-        //}
+        moveWorld.MoveScene("SceneEncounterData");
     }
 
     public void StartBattle(){
@@ -143,7 +138,6 @@ public class BattleHandler : MonoBehaviour
         if(skill.ManaCost > 0){
             timeWorld.changeTimer(-10);
         }
-        Debug.Log(playerUseDecelerate);
         var damageDetails = targetUnit.TakeDamage(skill, targetUnit, playerUseDecelerate);
         targetUnit.UpdateHPUD();
         // Play hit animation
